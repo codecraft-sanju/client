@@ -11668,10 +11668,10 @@ function ReportsSection() {
               cell: (row) => <AmountText value={Number(row.values.payable)} tone={Number(row.values.payable) < 0 ? 'debit' : 'neutral'} className="font-semibold" />,
               csv: (row) => row.values.payable,
             },
-          ],
+          ],//c
           rows,
           summary: [
-            { label: 'Workers', value: String(rows.length), tone: 'indigo' },
+          { label: 'Workers', value: String(rows.length), tone: 'indigo' as any },
             { label: 'Wages earned', value: formatINR(sumBy(rows, (row) => Number(row.values.wages) + Number(row.values.wageCredits) + Number(row.values.allowances) + Number(row.values.bonuses))), tone: 'emerald' },
             { label: 'Paid & advanced', value: formatINR(sumBy(rows, (row) => Number(row.values.payments) + Number(row.values.advances))), tone: 'sky' },
             { label: 'Payable now', value: formatINR(sumBy(rows, (row) => Math.max(0, Number(row.values.payable)))), tone: 'amber' },
@@ -11740,7 +11740,7 @@ function ReportsSection() {
           ],
           rows,
           summary: [
-            { label: 'Transactions', value: String(rows.length), tone: 'indigo' },
+         { label: 'Transactions', value: String(rows.length), tone: 'indigo' as any },
             { label: 'Total credit', value: formatINR(sumBy(rows, (row) => Number(row.values.credit) || 0)), tone: 'emerald' },
             { label: 'Total debit', value: formatINR(sumBy(rows, (row) => Number(row.values.debit) || 0)), tone: 'rose' },
             { label: 'People', value: String(new Set(rows.map((row) => row.values.person)).size), tone: 'sky' },
@@ -11799,7 +11799,7 @@ function ReportsSection() {
           ],
           rows,
           summary: [
-            { label: 'Projects', value: String(rows.length), tone: 'indigo' },
+        { label: 'Projects', value: String(rows.length), tone: 'indigo' as any },
             { label: 'Estimated', value: formatINRCompact(sumBy(rows, (row) => Number(row.values.estimated) || 0)), tone: 'slate' },
             { label: 'Actual', value: formatINRCompact(sumBy(rows, (row) => Number(row.values.actual) || 0)), tone: 'amber' },
             { label: 'Over budget', value: String(rows.filter((row) => Number(row.values.usage) > 100).length), tone: 'rose' },
@@ -11872,7 +11872,7 @@ function ReportsSection() {
           ],
           rows,
           summary: [
-            { label: 'Projects', value: String(rows.length), tone: 'indigo' },
+          { label: 'Projects', value: String(rows.length), tone: 'indigo' as any },
             { label: 'Total value', value: formatINRCompact(sumBy(rows, (row) => Number(row.values.value) || 0)), tone: 'emerald' },
             { label: 'Total cost', value: formatINRCompact(sumBy(rows, (row) => Number(row.values.actual) || 0)), tone: 'amber' },
             { label: 'Net profit', value: formatINRCompact(sumBy(rows, (row) => Number(row.values.profit) || 0)), tone: 'teal' },
@@ -11956,7 +11956,7 @@ function ReportsSection() {
           ],
           rows,
           summary: [
-            { label: 'Workers', value: String(rows.length), tone: 'indigo' },
+          { label: 'Workers', value: String(rows.length), tone: 'indigo' as any },
             { label: 'Records', value: String(filteredAttendance.length), tone: 'sky' },
             { label: 'Present days', value: String(sumBy(rows, (row) => Number(row.values.present) || 0)), tone: 'emerald' },
             { label: 'Absent days', value: String(sumBy(rows, (row) => Number(row.values.absent) || 0)), tone: 'rose' },
@@ -12023,7 +12023,7 @@ function ReportsSection() {
           ],
           rows,
           summary: [
-            { label: 'Entries', value: String(rows.length), tone: 'indigo' },
+           { label: 'Entries', value: String(rows.length), tone: 'indigo' as any },
             { label: 'Workers', value: String(new Set(rows.map((row) => row.values.worker)).size), tone: 'sky' },
             ...topUnits.map<ReportSummaryItem>(([unit, quantity]) => ({ label: `Total ${unit}`, value: formatNumber(quantity), tone: 'emerald' })),
           ].slice(0, 5),
